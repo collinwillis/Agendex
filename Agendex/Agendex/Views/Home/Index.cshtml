@@ -1,0 +1,24 @@
+﻿@model Agendex.Models.User
+@using Agendex.Controllers
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "../Shared/_Layout_notLoggedIn.cshtml";
+}
+
+<div class="jumbotron" align="center">
+    <h1>Agendex</h1>
+
+</div>
+
+@using (@Html.BeginForm("login", "Home", FormMethod.Post))
+{
+
+    <div>
+        @Html.ActionLink("Register", "Index")
+    </div>
+
+}
+
+<div class="row">
+
+</div>

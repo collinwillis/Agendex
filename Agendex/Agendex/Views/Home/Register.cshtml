@@ -1,0 +1,28 @@
+﻿@model Agendex.Models.User
+@using Agendex.Controllers
+@{
+    ViewBag.Title = "Register Page";
+    Layout = "../Shared/_Layout_notLoggedIn.cshtml";
+}
+
+<div class="jumbotron" align="center">
+    <h1>Agendex</h1>
+
+</div>
+
+<div align="center">
+@using (Html.BeginForm("RegisterUser", "Home"))
+{
+    <input type="submit" value="Register User" />
+}
+<br />
+@using (Html.BeginForm("RegisterCompany", "Home"))
+{
+    <input type="submit" value="Register Company" />
+}
+</div>
+
+
+<div class="row">
+
+</div>
