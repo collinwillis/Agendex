@@ -177,5 +177,7 @@ namespace Agendex.Models
             //BreakOutRoomCount = breakOutRoomCount;
             //Notes = notes;
         }
+
+        //Collin was here
     }
 }
