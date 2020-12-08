@@ -10,7 +10,7 @@ namespace Agendex.Data
     public class SecurityDAO
     {
         private string connectionString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog = Agendex; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Users\Collin\Dropbox\GCU\Year 3\Fall 2020\CST-326\Agendex\Agendex\Agendex\App_Data\Agendex.mdf';Integrated Security=True";
 
         public bool userInDB(Models.User user)
         {

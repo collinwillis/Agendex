@@ -131,6 +131,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Agendex.mdf" />
+    <Content Include="App_Data\Agendex_log.ldf">
+      <DependentUpon>Agendex.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -139,6 +143,80 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales-all.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales-all.min.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\af.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ar-dz.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ar-kw.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ar-ly.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ar-ma.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ar-sa.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ar-tn.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ar.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\az.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\bg.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\bs.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ca.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\cs.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\da.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\de.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\el.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\en-au.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\en-gb.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\en-nz.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\es-us.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\es.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\et.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\eu.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\fa.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\fi.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\fr-ca.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\fr-ch.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\fr.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\gl.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\he.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\hi.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\hr.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\hu.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\id.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\is.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\it.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ja.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ka.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\kk.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ko.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\lb.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\lt.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\lv.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\mk.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ms.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\nb.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ne.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\nl.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\nn.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\pl.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\pt-br.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\pt.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ro.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ru.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\sk.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\sl.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\sq.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\sr-cyrl.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\sr.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\sv.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\th.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\tr.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\ug.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\uk.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\uz.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\vi.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\zh-cn.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\locales\zh-tw.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\main.css" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\main.js" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\main.min.css" />
+    <Content Include="Lib\fullcalendar-5.4.0\lib\main.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -180,10 +258,9 @@
     <Content Include="Views\Home\CompanyHome.cshtml" />
     <Content Include="Views\Home\CompanyLogin.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
