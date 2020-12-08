@@ -21,6 +21,10 @@ namespace Agendex.Models
         }
         public Company()
         {
+            ID = 12345678;
+            CompanyName = "ACompanyName";
+            CompanyEmail = "ACompanyName@gmail.com";
+            Password = "password";
         }
     }
 }

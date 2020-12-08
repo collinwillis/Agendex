@@ -25,6 +25,11 @@ namespace Agendex.Models
 
         public User()
         {
+            FirstName = "AFirstName";
+            LastName = "ALastName";
+            Email = "AFirstAndLastName@gmail.com";
+            Password = "password";
+            CompanyId = 12345678;
         }
     }
 }
