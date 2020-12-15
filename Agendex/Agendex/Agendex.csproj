@@ -259,6 +259,7 @@
     <Content Include="Views\Home\CompanyLogin.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Home\EventCreation.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

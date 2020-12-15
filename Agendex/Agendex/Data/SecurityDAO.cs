@@ -213,5 +213,37 @@ namespace Agendex.Data
             }
         }
 
+        public bool CreateEvent(Models.Event company)
+        {
+            Random rnd = new Random();
+
+            bool success = false;
+
+            string queryString = "INSERT INTO dbo.COMPANIES (Id, CompanyEmail, Password, CompanyName) VALUES (@Id, @CompanyEmail, @Password, @CompanyName)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@Id", rnd.Next(100000, 99999999));
+                command.Parameters.AddWithValue("@CompanyEmail", company.CompanyEmail);
+                command.Parameters.AddWithValue("@Password", company.Password);
+                command.Parameters.AddWithValue("@CompanyName", company.CompanyName);
+
+                connection.Open();
+                int result = command.ExecuteNonQuery();
+
+                if (result < 0)
+                {
+                    Console.WriteLine("Error inserting");
+                }
+                else
+                {
+                    success = true;
+                }
+            }
+
+            return success;
+        }
+
     }
 }

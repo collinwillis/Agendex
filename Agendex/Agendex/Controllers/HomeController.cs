@@ -129,5 +129,10 @@ namespace Agendex.Controllers
             }
 
         }
+
+        public ActionResult CreateEvent()
+        {
+            return View("EventCreation");
+        }
     }
 }
