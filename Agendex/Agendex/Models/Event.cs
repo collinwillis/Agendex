@@ -17,6 +17,8 @@ namespace Agendex.Models
         public string EventName { get; set; }
         public string EventDescription { get; set; }
 
+        public int CompanyId { get; set; }
+
         //public int TotalAttendeeCount { get; set; }
         //public bool NonUS { get; set; }
         //public string RoomSetup { get; set; }
@@ -182,7 +184,7 @@ namespace Agendex.Models
             //Notes = notes;
         }
 
-        public Event(int iD, string type, DateTime startDate, DateTime endDate, string eventName, string eventDescription)
+        public Event(int iD, string type, DateTime startDate, DateTime endDate, string eventName, string eventDescription, int companyId)
         {
             ID = iD;
             Type = type;
@@ -190,6 +192,7 @@ namespace Agendex.Models
             EndDate = endDate;
             EventName = eventName;
             EventDescription = eventDescription;
+            CompanyId = companyId;
         }
     }
-    }
+}

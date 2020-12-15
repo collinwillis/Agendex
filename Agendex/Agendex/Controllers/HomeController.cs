@@ -5,14 +5,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Agendex.Models;
-using Agendex.Data;
+using Agendex.Business;
 
 namespace Agendex.Controllers
 {
     public class HomeController : Controller
     {
-        static Models.User currentUser = null;
-        private SecurityDAO dao = new SecurityDAO();
+        static User currentUser = null;
+        static Company currentCompany = null;
+        private ISecurityService _securityService;
+
+        public HomeController(ISecurityService securityService)
+        {
+            _securityService = securityService;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -64,10 +71,10 @@ namespace Agendex.Controllers
 
         public ActionResult OnRegisterUser(User u)
         {
-            bool success = dao.RegisterUser(u);
+            bool success = _securityService.RegisteredUser(u);
             if (success)
             {
-                User newUser = dao.returnUserFromDB(u);
+                User newUser = _securityService.ReturnAuthenticatedUser(u);
                 return View("UserRegistered", newUser);
             }
             else
@@ -80,10 +87,10 @@ namespace Agendex.Controllers
 
         public ActionResult OnRegisterCompany(Company c)
         {
-            bool success = dao.RegisterCompany(c);
+            bool success = _securityService.RegisteredCompany(c);
             if (success)
             {
-                Company newCompany = dao.returnCompanyFromDB(c);
+                Company newCompany = _securityService.ReturnAuthenticatedCompany(c);
                 return View("CompanyRegistered", newCompany);
             }
             else
@@ -98,13 +105,13 @@ namespace Agendex.Controllers
         public ActionResult SubmitUserLogin(User u)
         {
 
-                bool success = dao.userInDB(u);
+                bool success = _securityService.AuthenticateUser(u);
                 if (success)
                 {
-                    User foundUser = dao.returnUserFromDB(u);
+                User foundUser = _securityService.ReturnAuthenticatedUser(u);
                     HttpContext.Session["currentUser"] = foundUser;
+                currentUser = foundUser;
                     return View("UserHome", foundUser);
-
                 }
                 else
                 {
@@ -116,13 +123,13 @@ namespace Agendex.Controllers
         public ActionResult SubmitCompanyLogin(Company c)
         {
 
-            bool success = dao.CompanyInDB(c);
+            bool success = _securityService.AuthenticateCompany(c);
             if (success)
             {
-                Company foundCompany = dao.returnCompanyFromDB(c);
+                Company foundCompany = _securityService.ReturnAuthenticatedCompany(c);
                 HttpContext.Session["currentCompany"] = foundCompany;
+                currentCompany = foundCompany;
                 return View("CompanyHome", foundCompany);
-
             }
             else
             {
@@ -134,6 +141,24 @@ namespace Agendex.Controllers
         public ActionResult CreateEvent()
         {
             return View("EventCreation");
+        }
+
+        public ActionResult SubmitEvent(Models.Event e)
+        {
+            int currentUsersCompanyID = _securityService.FetchAssociatedCompanyID(currentUser);
+
+            e.CompanyId = currentUsersCompanyID;
+
+            bool success = _securityService.SubmitEvent(e);
+
+            if (success)
+            {
+                return View("EventCreationSuccess");
+            }
+            else
+            {
+                return View("EventCreationFailed");
+            }
         }
     }
 }

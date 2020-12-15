@@ -233,3 +233,19 @@ C:\Users\Collin\Dropbox\GCU\Year 3\Fall 2020\CST-326\Agendex\Agendex\Agendex\obj
 C:\Users\Collin\Dropbox\GCU\Year 3\Fall 2020\CST-326\Agendex\Agendex\Agendex\obj\Debug\Agendex.csproj.CopyComplete
 C:\Users\Collin\Dropbox\GCU\Year 3\Fall 2020\CST-326\Agendex\Agendex\Agendex\obj\Debug\Agendex.dll
 C:\Users\Collin\Dropbox\GCU\Year 3\Fall 2020\CST-326\Agendex\Agendex\Agendex\obj\Debug\Agendex.pdb
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\Unity.Abstractions.dll
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\Unity.Container.dll
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\Unity.Abstractions.pdb
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\Unity.Container.pdb
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\Unity.Mvc.dll
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\WebActivatorEx.dll
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\Unity.Mvc.pdb
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\Unity.Mvc.xml
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\EntityFramework.dll
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\EntityFramework.SqlServer.dll
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\EntityFramework.xml
+C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\bin\EntityFramework.SqlServer.xml
