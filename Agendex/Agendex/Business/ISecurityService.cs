@@ -19,9 +19,13 @@ namespace Agendex.Business
         bool AuthenticateEvent(Event e);
         bool SubmitEvent(Event e);
 
+        bool CompanySubmitEvent(Models.Event e);
+
         //Inserts Event from Events Table into ConfirmedEvents Table
         bool ConfirmEvent(Event e);
 
         int FetchAssociatedCompanyID(Models.User user);
+
+
     }
 }

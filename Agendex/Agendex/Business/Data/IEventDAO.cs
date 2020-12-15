@@ -14,5 +14,6 @@ namespace Agendex.Business.Data
         bool AuthenticateConfirmedEvent(Models.Event e);
         bool DeleteEvent(Models.Event e);
         bool DeleteConfirmedEvent(Models.Event e);
+        bool CompanySubmitEvent(Models.Event e);
     }
 }

@@ -12,8 +12,8 @@ namespace Agendex.Models
         //public bool Aero { get; set; }
         //public string ContactEmail { get; set; }
         //public string ContactName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
         public string EventName { get; set; }
         public string EventDescription { get; set; }
 
@@ -184,7 +184,7 @@ namespace Agendex.Models
             //Notes = notes;
         }
 
-        public Event(int iD, string type, DateTime startDate, DateTime endDate, string eventName, string eventDescription, int companyId)
+        public Event(int iD, string type, string startDate, string endDate, string eventName, string eventDescription, int companyId)
         {
             ID = iD;
             Type = type;

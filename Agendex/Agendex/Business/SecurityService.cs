@@ -73,5 +73,10 @@ namespace Agendex.Business
         {
             return eventDAO.SubmitEvent(e);
         }
+
+        public bool CompanySubmitEvent(Event e)
+        {
+            return eventDAO.CompanySubmitEvent(e);
+        }
     }
 }

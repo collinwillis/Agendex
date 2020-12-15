@@ -10,7 +10,7 @@ namespace Agendex.Business.Data
     public class SecurityDAO : ISecurityDAO
     {
         private string connectionString =
-            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\derek\Documents\GitHub\Agendex\Agendex\Agendex\App_Data\Agendex.mdf;Integrated Security=True";
+            @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Users\Collin\Dropbox\GCU\Year 3\Fall 2020\CST-326\Agendex\Agendex\Agendex\App_Data\Agendex.mdf';Integrated Security=True";
 
         public bool AuthenticateUserInDB(Models.User user)
         {
@@ -84,7 +84,7 @@ namespace Agendex.Business.Data
         public int FetchAssociatedCompanyID(Models.User user)
         {
             int CompanyID = -1;
-            string queryString = "SELECT CompanyId FROM dbo.USERS WHERE Id = @Id";
+            string queryString = "SELECT * FROM dbo.USERS WHERE Id = @Id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -98,7 +98,10 @@ namespace Agendex.Business.Data
 
                     if (reader.HasRows)
                     {
+                        reader.Read();
+                        Debug.WriteLine(reader.GetString(1));
                         CompanyID = reader.GetInt32(5);
+
                     }
                     reader.Close();
                 }
@@ -107,6 +110,7 @@ namespace Agendex.Business.Data
 
             return CompanyID;
         }
+
 
         public bool AuthenticateCompanyInDB(Models.Company company)
         {

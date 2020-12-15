@@ -11,7 +11,7 @@ namespace Agendex.Controllers
 {
     public class HomeController : Controller
     {
-        static User currentUser = null;
+        public User currentUser = null;
         static Company currentCompany = null;
         private ISecurityService _securityService;
 
@@ -145,7 +145,7 @@ namespace Agendex.Controllers
 
         public ActionResult SubmitEvent(Models.Event e)
         {
-            int currentUsersCompanyID = _securityService.FetchAssociatedCompanyID(currentUser);
+            int currentUsersCompanyID = _securityService.FetchAssociatedCompanyID((User)HttpContext.Session["currentUser"]);
 
             e.CompanyId = currentUsersCompanyID;
 
@@ -153,7 +153,30 @@ namespace Agendex.Controllers
 
             if (success)
             {
-                return View("EventCreationSuccess");
+                return View("EventCreationSuccess", e);
+            }
+            else
+            {
+                return View("EventCreationFailed");
+            }
+        }
+
+        public ActionResult CompanyCreateEvent()
+        {
+            return View("CompanyEventCreation");
+        }
+
+        public ActionResult CompanySubmitEvent(Models.Event e)
+        {
+            Company c = (Company)HttpContext.Session["currentCompany"];
+
+            e.CompanyId = c.ID;
+
+            bool success = _securityService.SubmitEvent(e);
+
+            if (success)
+            {
+                return View("EventCreationSuccess", e);
             }
             else
             {

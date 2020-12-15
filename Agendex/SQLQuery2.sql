@@ -1,0 +1,1 @@
+﻿SELECT CompanyId FROM dbo.USERS WHERE Id = 1
