@@ -213,21 +213,54 @@ namespace Agendex.Data
             }
         }
 
-        public bool CreateEvent(Models.Event company)
+        public int fetchCompanyID(Models.User user)
         {
-            Random rnd = new Random();
-
-            bool success = false;
-
-            string queryString = "INSERT INTO dbo.COMPANIES (Id, CompanyEmail, Password, CompanyName) VALUES (@Id, @CompanyEmail, @Password, @CompanyName)";
+            int CompanyID = -1;
+            string queryString = "SELECT CompanyId FROM dbo.USERS WHERE Id = @Id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.AddWithValue("@Id", rnd.Next(100000, 99999999));
-                command.Parameters.AddWithValue("@CompanyEmail", company.CompanyEmail);
-                command.Parameters.AddWithValue("@Password", company.Password);
-                command.Parameters.AddWithValue("@CompanyName", company.CompanyName);
+                command.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = user.ID;
+                try
+                {
+                    connection.Open();
+                    Debug.WriteLine("in here");
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        CompanyID = reader.GetInt32(5);
+                    }
+                    reader.Close();
+                }
+                catch (Exception e) { Debug.WriteLine(e.Message); }
+            }
+
+            return CompanyID;
+        }
+
+        public bool CreateEvent(Models.Event newEvent, Models.User user)
+        {
+            int companyId;
+
+            companyId = fetchCompanyID(HttpContext.Session[]);
+
+            bool success = false;
+
+            string queryString = "INSERT INTO dbo.EVENTS (Type, EventName, Description, Start, End) VALUES (@Type, @EventName, @EventDescription, @StartDate, @EndDate)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@Type", newEvent.Type);
+                command.Parameters.AddWithValue("@EventName", newEvent.EventName);
+                command.Parameters.AddWithValue("@Description", newEvent.EventDescription);
+                command.Parameters.AddWithValue("@Start", newEvent.StartDate);
+                command.Parameters.AddWithValue("@End", newEvent.EndDate);
+                command.Parameters.AddWithValue("@Start", newEvent.StartDate);
+                command.Parameters.AddWithValue("@CompanyId", companyId);
+
 
                 connection.Open();
                 int result = command.ExecuteNonQuery();

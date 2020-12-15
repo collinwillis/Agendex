@@ -11,6 +11,7 @@ namespace Agendex.Controllers
 {
     public class HomeController : Controller
     {
+        static Models.User currentUser = null;
         private SecurityDAO dao = new SecurityDAO();
         public ActionResult Index()
         {
