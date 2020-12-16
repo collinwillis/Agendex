@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Agendex.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -183,28 +184,32 @@ namespace Agendex.Business.Data
         {
             bool success = false;
 
-            string queryString = "INSERT INTO dbo.USERS (Email, Password, FirstName, LastName, CompanyId) VALUES (@Email, @Password, @FirstName, @LastName, @CompanyId)";
-
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            Company c = CompanyFromId(user.CompanyId);
+            if (c.ID != 12345678)
             {
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.AddWithValue("@FirstName", user.FirstName);
-                command.Parameters.AddWithValue("@LastName", user.LastName);
-                command.Parameters.AddWithValue("@Email", user.Email);
-                command.Parameters.AddWithValue("@Password", user.Password);
-                command.Parameters.AddWithValue("@CompanyId", user.CompanyId);
+                string queryString = "INSERT INTO dbo.USERS (Email, Password, FirstName, LastName, CompanyId) VALUES (@Email, @Password, @FirstName, @LastName, @CompanyId)";
 
-                connection.Open();
-                int result = command.ExecuteNonQuery();
 
-                if (result < 0)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    Console.WriteLine("Error inserting");
-                }
-                else
-                {
-                    success = true;
+                    SqlCommand command = new SqlCommand(queryString, connection);
+                    command.Parameters.AddWithValue("@FirstName", user.FirstName);
+                    command.Parameters.AddWithValue("@LastName", user.LastName);
+                    command.Parameters.AddWithValue("@Email", user.Email);
+                    command.Parameters.AddWithValue("@Password", user.Password);
+                    command.Parameters.AddWithValue("@CompanyId", user.CompanyId);
+
+                    connection.Open();
+                    int result = command.ExecuteNonQuery();
+
+                    if (result < 0)
+                    {
+                        Console.WriteLine("Error inserting");
+                    }
+                    else
+                    {
+                        success = true;
+                    }
                 }
             }
 
@@ -243,5 +248,35 @@ namespace Agendex.Business.Data
             return success;
         }
 
+        public Company CompanyFromId(int id)
+        {
+            Company c = new Company();
+
+            string queryString = "SELECT * FROM dbo.COMPANIES WHERE Id = @Id";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = id;
+                try
+                {
+                    connection.Open();
+                    Debug.WriteLine("in here");
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        c.ID = id;
+                        c.CompanyEmail = reader.GetString(1);
+                        c.Password = reader.GetString(2);
+                        c.CompanyName = reader.GetString(3);
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            }
+            return c;
+        }
     }
 }

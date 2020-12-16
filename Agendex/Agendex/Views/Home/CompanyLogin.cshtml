@@ -1,11 +1,11 @@
 ﻿@model Agendex.Models.Company
 
 @{
-    ViewBag.Title = "RegisterCompany";
+    ViewBag.Title = "Company Login";
     Layout = "~/Views/Shared/_Layout_notLoggedIn.cshtml";
 }
 
-<h2>RegisterCompany</h2>
+<h2>Company Login</h2>
 
 @using (Html.BeginForm("SubmitCompanyLogin", "Home", FormMethod.Post)) 
 {
@@ -27,7 +27,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,5 +41,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back", "Login")
 </div>

@@ -160,6 +160,7 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\ViewEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

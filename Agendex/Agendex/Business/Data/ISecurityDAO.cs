@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Agendex.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,6 @@ namespace Agendex.Business.Data
         Models.Company ReturnCompanyFromDB(Models.Company company);
         bool RegisterUser(Models.User user);
         bool RegisterCompany(Models.Company company);
+        Company CompanyFromId(int id);
     }
 }

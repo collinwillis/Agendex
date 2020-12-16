@@ -295,5 +295,49 @@ namespace Agendex.Business.Data
             }
             return e;
         }
+
+        public List<Event> GetConfirmedEvents(Company c)
+        {
+            bool success = false;
+            List<Event> eventList = new List<Event>();
+
+            string queryString = "SELECT * FROM dbo.CONFIRMED_EVENTS WHERE CompanyId = @CompanyId";
+
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand sqlCommand = new SqlCommand(queryString, sqlConnection))
+                {
+                    sqlCommand.Parameters.AddWithValue("@CompanyId", c.ID);
+                    try
+                    {
+                        sqlConnection.Open();
+                        SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                        while (sqlDataReader.Read())
+                        {
+                            Event e = new Event();
+                            e.ID = sqlDataReader.GetInt32(0);
+                            e.Type = sqlDataReader.GetString(1);
+                            e.EventName = sqlDataReader.GetString(2);
+                            e.EventDescription = sqlDataReader.GetString(3);
+                            e.StartDate = sqlDataReader.GetString(4);
+                            e.EndDate = sqlDataReader.GetString(5);
+                            e.CompanyId = sqlDataReader.GetInt32(6);
+
+                            eventList.Add(e);
+                        }
+                        sqlDataReader.Close();
+                        sqlConnection.Close();
+                        success = true;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Failue!");
+                        Debug.WriteLine(e.Message);
+                    }
+                }
+            }
+
+            return eventList;
+        }
     }
 }

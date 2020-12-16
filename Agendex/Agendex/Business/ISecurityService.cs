@@ -23,7 +23,11 @@ namespace Agendex.Business
 
         List<Models.Event> GetRequestedEvents(Company c);
 
+        List<Models.Event> GetConfirmedEvents(Company c);
+
         Event EventFromId(int id);
+
+        Company CompanyFromId(int id);
 
         bool DeleteEvent(int id);
         bool DeleteConfirmedEvent(int id);

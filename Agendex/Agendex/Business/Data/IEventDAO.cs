@@ -19,5 +19,6 @@ namespace Agendex.Business.Data
         bool CompanySubmitEvent(Models.Event e);
         List<Event> GetRequestedEvents(Company c);
         Event EventFromId(int id);
+        List<Event> GetConfirmedEvents(Company c);
     }
 }

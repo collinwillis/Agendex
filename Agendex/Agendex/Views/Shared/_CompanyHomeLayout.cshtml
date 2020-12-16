@@ -25,13 +25,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("Agendex", "CompanyHome", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 <li>@Html.ActionLink("Create Event", "CompanyCreateEvent", "Home")</li>
                 <li>@Html.ActionLink("Requested Events", "ViewRequestedEvents", "Home")</li>
                 <li>@Html.ActionLink("Logout", "Index", "Home")</li>
@@ -40,6 +37,7 @@
     </div>
 </div>
 <div class="container body-content">
+    <br />
     @RenderBody()
     <hr />
     <footer>

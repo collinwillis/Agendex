@@ -71,7 +71,46 @@ namespace Agendex.Controllers
 
         public ActionResult CompanyHome()
         {
+            
             return View();
+        }
+
+        public JsonResult PopulateEvents(DateTime start, DateTime end)
+        {
+            List<Event> databaseEvents;
+            if ((Company)HttpContext.Session["currentCompany"] == null)
+            {
+                User currentUser = (User)HttpContext.Session["currentUser"];
+                int id = _securityService.FetchAssociatedCompanyID(currentUser);
+                Company c = _securityService.CompanyFromId(id);
+                databaseEvents = _securityService.GetConfirmedEvents(c);
+            }
+            else
+            {
+                Company currentCompany = (Company)HttpContext.Session["currentCompany"];
+                databaseEvents = _securityService.GetConfirmedEvents(currentCompany);
+            }
+            var events = new List<ViewEvent>();
+            for (int i = 0; i < databaseEvents.Count; i++)
+            {
+                events.Add(new ViewEvent()
+                {
+                    id = databaseEvents[i].ID,
+                    title = "Event: " + databaseEvents[i].EventName,
+                    start = databaseEvents[i].StartDate,
+                    end = databaseEvents[i].EndDate,
+                    description = databaseEvents[i].EventDescription
+                });
+
+                start = start.AddDays(7);
+                end = end.AddDays(7);
+            }
+            return Json(events.ToArray(), JsonRequestBehavior.AllowGet);
+        }
+
+            public ActionResult UserHome()
+        {
+            return View("UserHome");
         }
 
         public ActionResult OnRegisterUser(User u)
@@ -116,7 +155,7 @@ namespace Agendex.Controllers
                 User foundUser = _securityService.ReturnAuthenticatedUser(u);
                     HttpContext.Session["currentUser"] = foundUser;
                 currentUser = foundUser;
-                    return View("UserHome", foundUser);
+                    return UserHome();
                 }
                 else
                 {
@@ -210,5 +249,7 @@ namespace Agendex.Controllers
             _securityService.DeleteEvent(Id);
             return ViewRequestedEvents();
         }
+
+
     }
 }

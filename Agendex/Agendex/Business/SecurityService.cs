@@ -98,5 +98,15 @@ namespace Agendex.Business
         {
             return eventDAO.DeleteConfirmedEvent(id);
         }
+
+        public List<Event> GetConfirmedEvents(Company c)
+        {
+            return eventDAO.GetConfirmedEvents(c);
+        }
+
+        public Company CompanyFromId(int id)
+        {
+            return securityDAO.CompanyFromId(id);
+        }
     }
 }
