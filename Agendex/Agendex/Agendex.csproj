@@ -339,7 +339,9 @@
     <Content Include="Views\Home\EventCreationFailed.cshtml" />
     <Content Include="Views\Shared\_Layout_CompanyLoggedIn.cshtml" />
     <Content Include="Views\Home\CompanyEventCreation.cshtml" />
-    <Content Include="Views\Shared\_CompanyHomeLayout - Copy.cshtml" />
+    <Content Include="Views\Shared\_CompanyHomeLayout.cshtml" />
+    <Content Include="Views\Home\ViewRequestedEvents.cshtml" />
+    <Content Include="Views\Home\CompanyEventCreationSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

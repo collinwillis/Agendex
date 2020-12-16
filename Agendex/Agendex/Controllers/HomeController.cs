@@ -69,6 +69,11 @@ namespace Agendex.Controllers
             return View();
         }
 
+        public ActionResult CompanyHome()
+        {
+            return View();
+        }
+
         public ActionResult OnRegisterUser(User u)
         {
             bool success = _securityService.RegisteredUser(u);
@@ -172,16 +177,38 @@ namespace Agendex.Controllers
 
             e.CompanyId = c.ID;
 
-            bool success = _securityService.SubmitEvent(e);
+            bool success = _securityService.CompanySubmitEvent(e);
 
             if (success)
             {
-                return View("EventCreationSuccess", e);
+                return View("CompanyEventCreationSuccess", e);
             }
             else
             {
                 return View("EventCreationFailed");
             }
+        }
+
+        public ActionResult ViewRequestedEvents()
+        {
+            Company c = (Company)HttpContext.Session["currentCompany"];
+            List<Event> requestedEvents = _securityService.GetRequestedEvents(c);
+            return View("ViewRequestedEvents", requestedEvents);
+        }
+
+
+        public ActionResult AcceptEvent(int Id)
+        {
+            Event acceptedEvent = _securityService.EventFromId(Id);
+            _securityService.ConfirmEvent(acceptedEvent);
+            _securityService.DeleteEvent(Id);
+            return ViewRequestedEvents();
+        }
+
+        public ActionResult DeleteEvent(int Id)
+        {
+            _securityService.DeleteEvent(Id);
+            return ViewRequestedEvents();
         }
     }
 }

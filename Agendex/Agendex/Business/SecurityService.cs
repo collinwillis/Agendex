@@ -78,5 +78,25 @@ namespace Agendex.Business
         {
             return eventDAO.CompanySubmitEvent(e);
         }
+
+        public List<Event> GetRequestedEvents(Company c)
+        {
+            return eventDAO.GetRequestedEvents(c);
+        }
+
+        public Event EventFromId(int id)
+        {
+            return eventDAO.EventFromId(id);
+        }
+
+        public bool DeleteEvent(int id)
+        {
+            return eventDAO.DeleteEvent(id);
+        }
+
+        public bool DeleteConfirmedEvent(int id)
+        {
+            return eventDAO.DeleteConfirmedEvent(id);
+        }
     }
 }

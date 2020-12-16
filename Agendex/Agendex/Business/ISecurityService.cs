@@ -21,6 +21,14 @@ namespace Agendex.Business
 
         bool CompanySubmitEvent(Models.Event e);
 
+        List<Models.Event> GetRequestedEvents(Company c);
+
+        Event EventFromId(int id);
+
+        bool DeleteEvent(int id);
+        bool DeleteConfirmedEvent(int id);
+
+
         //Inserts Event from Events Table into ConfirmedEvents Table
         bool ConfirmEvent(Event e);
 

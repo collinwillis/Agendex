@@ -185,6 +185,7 @@ namespace Agendex.Business.Data
 
             string queryString = "INSERT INTO dbo.USERS (Email, Password, FirstName, LastName, CompanyId) VALUES (@Email, @Password, @FirstName, @LastName, @CompanyId)";
 
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(queryString, connection);
